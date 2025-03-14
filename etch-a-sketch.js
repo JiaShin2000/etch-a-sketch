@@ -15,6 +15,7 @@ let selectedColor = "#ff0000";
 //Initialize canvas
 changeColor();
 changeCanvasSize(sizeValue);
+toggleButton(draw);
 
 function changeColor() {
   selectedColor = colorPicker.value;
@@ -68,6 +69,14 @@ sliderSize.addEventListener("input", () => {
   sizeValue = sliderSize.value;
   changeSizeValue(sizeValue); //update displayed size
   changeCanvasSize(sizeValue); //update grid size
+
+  if (isToggled) {
+    const squares = document.querySelectorAll(".square");
+
+    squares.forEach((square) => {
+      square.style.boxShadow = isToggled ? "0 0 0 0.5px black" : "none";
+    });
+  }
 });
 
 document.addEventListener("mousedown", () => {
@@ -84,14 +93,20 @@ toggleGrid.addEventListener("click", () => {
 });
 
 draw.addEventListener("click", () => {
-  toggleButton(draw);
-  eraser.classList.remove("active");
+  if (!draw.classList.contains("active")) {
+    toggleButton(draw);
+    eraser.classList.remove("active");
+  }
+
   isErasing = false;
 });
 
 eraser.addEventListener("click", () => {
-  toggleButton(eraser);
-  draw.classList.remove("active");
+  if (!eraser.classList.contains("active")) {
+    toggleButton(eraser);
+    draw.classList.remove("active");
+  }
+
   isErasing = true;
 });
 

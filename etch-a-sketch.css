@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Patrick+Hand&family=Comic+Neue&display=swap");
+
+* {
+  background-color: rgb(41, 40, 40);
+  color: aqua;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+:root {
+  --canvas-size: 16;
+}
+
+h1 {
+  font-family: "Rock Salt", cursive;
+  text-align: center;
+  margin-top: 15px;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+p {
+  font-family: "Patrick Hand", cursive;
+}
+
+button {
+  font-family: "Comic Neue", cursive;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+/* 
+.menu:hover {
+  box-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 60px #0ff, 0 0 120px #0ff; // Intensifies glow on hover
+  transform: scale(1.05); // Slight pop effect
+  transition: all 0.3s ease-in-out;
+} 
+*/
+
+.title {
+  font-size: 2rem;
+}
+
+.size-value {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 10px 30px;
+  width: 8.4em;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid aqua;
+  border-radius: 5px;
+}
+
+button:hover {
+  box-shadow: 3px 3px 10px #0ff;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  animation: flickerText 1.5s infinite alternate;
+}
+
+button.active {
+  background-color: aqua;
+  color: black;
+  box-shadow: 0 0 10px aqua;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping */
+  width: 30rem; /* Set fixed width */
+  height: 30rem; /* Set fixed height */
+  box-shadow: 0 0 10px black, 0 0 30px #0ff;
+  border-collapse: collapse;
+}
+
+.square {
+  flex-basis: calc(30rem / var(--canvas-size)); /* Divide width by 16 */
+  height: calc(30rem / var(--canvas-size)); /* Divide height by 16 */
+  background-color: white;
+  box-sizing: border-box;
+  /* box-shadow: 0 0 0 0.5px black; */
+}
+
+.square:hover {
+  background-color: none;
+  cursor: pointer;
+}
+
+.slider-container {
+  text-align: center;
+  width: 100%;
+}
+
+input[type="range"] {
+  appearance: none;
+  background-color: none;
+  width: 160px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  border: 1px solid aqua;
+  border-radius: 25px;
+  background: black;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 25px;
+  margin-top: -6px;
+  background: aqua;
+}
+
+input[type="color"]:active {
+  transition: transform 0.05s ease-in-out;
+  transform: scale(0.95);
+}
+
+input[type="color"] {
+  appearance: none;
+  width: 100px;
+  height: 100px;
+  border: none;
+  background-color: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+footer {
+  display: flex;
+  background-color: transparent;
+  color: aqua;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+footer a {
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  text-decoration: underline;
+  background-color: transparent;
+  color: aqua;
+  font-size: 1.2rem;
+  gap: 8px;
+  animation: flickerText 1.5s infinite alternate;
+}
+
+footer a:hover {
+  animation: float 3s ease-in-out infinite, flickerText 1.5s infinite alternate;
+}
+
+.github-logo {
+  display: inline-block;
+  background: aqua;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  max-width: 28px;
+  max-height: 28px;
+  animation: flicker 1.5s infinite alternate;
+  transition: all 0.3s ease-in-out;
+}
+
+.github-logo:hover {
+  animation: float 3s ease-in-out infinite, flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    box-shadow: 0 0 5px aqua;
+  }
+  50% {
+    box-shadow: 0 0 15px aqua;
+  }
+  100% {
+    box-shadow: 0 0 10px aqua;
+  }
+}
+
+@keyframes flickerText {
+  0% {
+    text-shadow: 0 0 5px aqua;
+  }
+  50% {
+    text-shadow: 0 0 15px aqua;
+  }
+  100% {
+    text-shadow: 0 0 10px aqua;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 860px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .container {
+    width: 30rem; /* Set fixed width */
+    height: 30rem; /* Set fixed height */
+  }
+
+  .square {
+    flex-basis: calc(30rem / var(--canvas-size));
+    height: calc(30rem / var(--canvas-size));
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    flex-direction: column-reverse;
+    gap: 5rem;
+  }
+
+  .container {
+    width: 20rem; /* Set fixed width */
+    height: 20rem; /* Set fixed height */
+  }
+
+  .square {
+    flex-basis: calc(20rem / var(--canvas-size));
+    height: calc(20rem / var(--canvas-size));
+  }
+}
