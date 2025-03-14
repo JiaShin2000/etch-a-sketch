@@ -35,7 +35,3 @@ A simple and fun **Etch-a-Sketch** app that lets you draw, erase, and customize 
 ## 📜 License
 
 This project is open-source under the **MIT License**.
-
----
-
-🚀 **Enjoy sketching! Let me know if you need improvements!** 😊
