@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./etch-a-sketch.css" />
+    <title>Etch-a-Sketch</title>
+  </head>
+  <body>
+    <h1>Etch-a-Sketch 🖌️</h1>
+    <div class="content">
+      <div class="menu">
+        <div class="title">Color Picker</div>
+        <input id="colorPicker" type="color" value="#00ffff"></input>
+        <div class="slider-container">
+          <div class="size-value">16 x 16</div>
+          <input type="range" min="1" max="64" value="16" class="slider" id="sliderSize">
+        </div>
+        <button class="toggle-grid">Toggle Grid</button>
+        <button class="draw">Draw</button>
+        <button class="eraser">Eraser</button>
+        <button class="clear">Clear</button>
+    </div>
+    <div class="container"></div>
+  </div>
+  <footer>
+    <a
+      href="https://github.com/JiaShin2000/rock-paper-scissors"
+      target="_blank"
+      >© Designed By Shin <img class="github-logo" src="./assets/icons/github-mark.svg"></a
+    >
+  </footer>
+  </body>
+  <script src="./etch-a-sketch.js"></script>
+</html>
