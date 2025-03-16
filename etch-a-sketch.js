@@ -17,6 +17,26 @@ changeColor();
 changeCanvasSize(sizeValue);
 toggleButton(draw);
 
+function handleDraw(e) {
+  if (!isDrawing) return;
+
+  //For mobile users (Retrieve touch position)
+  let targetSquare;
+
+  if (e.type === "touchmove") {
+    e.preventDefault();
+    const touch = e.touches[0];
+    targetSquare = document.elementFromPoint(touch.clientX, touch.clientY);
+  } else {
+    targetSquare = e.target;
+  }
+
+  //Change color if it's a square
+  if (targetSquare && targetSquare.classList.contains("square")) {
+    targetSquare.style.backgroundColor = isErasing ? "white" : selectedColor;
+  }
+}
+
 function changeColor() {
   selectedColor = colorPicker.value;
 }
@@ -59,6 +79,11 @@ function changeCanvasSize(sizeValue) {
         square.style.backgroundColor = isErasing ? "white" : selectedColor;
       }
     });
+
+    square.addEventListener("touchstart", (e) => {
+      isDrawing = true;
+      handleDraw(e);
+    });
   });
 }
 
@@ -79,13 +104,32 @@ sliderSize.addEventListener("input", () => {
   }
 });
 
-document.addEventListener("mousedown", () => {
+//Start drawing
+container.addEventListener("mousedown", () => {
+  isDrawing = true;
+});
+container.addEventListener("touchstart", () => {
   isDrawing = true;
 });
 
+//Stop drawing
 document.addEventListener("mouseup", () => {
   isDrawing = false;
 });
+document.addEventListener("touchend", () => {
+  isDrawing = false;
+});
+
+//Detect movement
+container.addEventListener("mousemove", handleDraw);
+container.addEventListener(
+  "touchmove",
+  (e) => {
+    e.preventDefault();
+    handleDraw(e);
+  },
+  { passive: false }
+);
 
 toggleGrid.addEventListener("click", () => {
   toggleButton(toggleGrid);
